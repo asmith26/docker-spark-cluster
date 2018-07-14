@@ -1,3 +1,5 @@
+"spark-submit" == "edge node"
+
 1. Build images based on my changes: (within the respective directories)
  ```
 docker build . -t spark-datastore
@@ -10,7 +12,7 @@ docker build . -t spark-slave
 docker create -v ~/git/docker-spark-cluster/data/:/data --name spark-datastore spark-datastore
 docker run -d -p 8080:8080 -p 7077:7077 --volumes-from spark-datastore --name master spark-master
 docker run -d --link master:master --volumes-from spark-datastore spark-slave
-docker run --rm -it --link master:master --volumes-from spark-datastore spark-submit spark-submit --master spark://172.17.0.3:7077 /data/scripts/hello_pyspark.py
+docker run --rm -it --link master:master --volumes-from spark-datastore --volume ~/git/docker-spark-cluster/scripts/:/scripts spark-submit spark-submit --master spark://172.17.0.3:7077 /scripts/hello_pyspark.py
 ```
 
 # === ORIGINAL README: ===
