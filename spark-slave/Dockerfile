@@ -4,7 +4,7 @@ FROM ubuntu:16.04
 RUN apt-get update && apt-get install -y \
  wget \
  default-jdk \
- python2.7 \
+ python3.5 \
  scala && cd /home && mkdir spark && cd spark && \
  wget https://archive.apache.org/dist/spark/spark-2.1.1/spark-2.1.1-bin-hadoop2.6.tgz && \
  tar -xvf spark-2.1.1-bin-hadoop2.6.tgz

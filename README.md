@@ -1,3 +1,20 @@
+1. Build images based on my changes: (within the respective directories)
+ ```
+docker build . -t spark-datastore
+docker build . -t spark-master
+docker build . -t spark-slave
+```
+
+2. Create/Run:
+ ```
+docker create -v ~/git/docker-spark-cluster/data/:/data --name spark-datastore spark-datastore
+docker run -d -p 8080:8080 -p 7077:7077 --volumes-from spark-datastore --name master spark-master
+docker run -d --link master:master --volumes-from spark-datastore spark-slave
+docker run --rm -it --link master:master --volumes-from spark-datastore spark-submit spark-submit --master spark://172.17.0.3:7077 /data/scripts/hello_pyspark.py
+```
+
+# === ORIGINAL README: ===
+
 # Spark Cluster using Docker
 
 This readme will guide you through the creation and setup of a 3 node spark cluster using Docker containers, share the same data volume to use as the script source, how to run a script using spark-submit and how to create a container to schedule spark jobs.
