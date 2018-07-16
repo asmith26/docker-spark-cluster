@@ -17,6 +17,8 @@ docker run --rm -it --link master:master --volumes-from spark-datastore --volume
 
 or with yarn `export PYSPARK_PYTHON="/usr/local/bin/python3.5" && spark2-submit --master yarn scripts/hello_pyspark.py`
 
+Also see this repo for a example pyspark job using third party packages: https://github.com/asmith26/PySpark-Boilerplate
+
 # === ORIGINAL README: ===
 
 # Spark Cluster using Docker
