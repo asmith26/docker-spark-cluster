@@ -15,7 +15,7 @@ docker run -d --link master:master --volumes-from spark-datastore spark-slave
 docker run --rm -it --link master:master --volumes-from spark-datastore --volume ~/git/docker-spark-cluster/scripts/:/scripts spark-submit spark-submit --master spark://172.17.0.3:7077 /scripts/hello_pyspark.py
 ```
 
-or with yarn `export PYSPARK_PYTHON="/usr/local/bin/python3.5" && spark2-submit --master yarn scripts/hello_pyspark.py`
+or with yarn (using https://github.com/asmith26/docker-spark) `export PYSPARK_PYTHON="/usr/local/bin/python3.5" && spark2-submit --master yarn scripts/hello_pyspark.py`
 
 Also see this repo for a example pyspark job using third party packages: https://github.com/asmith26/PySpark-Boilerplate
 
